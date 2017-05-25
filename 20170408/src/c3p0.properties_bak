@@ -1,0 +1,15 @@
+c3p0.user=larry
+c3p0.password=1234
+c3p0.jdbcUrl=jdbc:oracle:thin:@192.168.0.3:1521/xe
+#配置初始化的池大小
+c3p0.initialPoolSize=2
+#如果池里面的连接不够的情况下，每一次增长几个
+c3p0.acquireIncrement=2
+#最多有几个连接
+c3p0.maxPoolSize=3
+#最少的连接
+c3p0.minPoolSize=2
+#配置驱动器
+c3p0.driverClass=oracle.jdbc.OracleDriver
+#连接超时时间
+c3p0.checkoutTimeout=3000

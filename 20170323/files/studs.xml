@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><studs>
+     
+     
+
+     <stud id="S003">
+       <name>越七</name>
+       <age>48</age>
+     </stud>
+
+     <stud id="s003">
+  <age/>
+<name>22</name>
+</stud>
+<stud id="s003">
+<name>绪鑫</name>
+<age>22</age>
+</stud>
+<stud id="s002"><name>绪鑫</name><age>22</age></stud></studs>

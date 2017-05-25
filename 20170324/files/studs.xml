@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studs >
+	
+	<stud id="S002">
+		<name>绪鑫</name>
+		<age>22</age>
+	</stud>
+	
+    <stud id="S003">
+         <name>李四</name>
+         <age>28</age>
+    </stud>
+
+    <stud id="S001">
+          <name>郭晶晶</name>
+         <age>21</age>
+    </stud>
+</studs>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<p>主页</p>
+	<a href="javascript:_send();">get参数</a>
+	<br>
+	<form method="post" action="demo01Servlet">
+		<input type="text" name="name"> <br> <input type="text"
+			name="addr"> <br> 爱好： <input type="checkbox"
+			name="hobby" value="Music">音乐 <input type="checkbox"
+			name="hobby" value="reading">读书 <input type="checkbox"
+			name="hobby" value="football">足球 <br> 验证码:<input
+			type="text" name="code"> <img id="codeImg" src="demo03">
+			<a href="javascript:_chg();">看不清</a>
+			 <br>
+			 
+			 <input
+			type="submit" value="提交">
+	</form>
+	<hr>
+	<a href="demo02Servlet">Go</a>
+</body>
+<script type="text/javascript">
+	function _send() {
+		var url = "demo01Servlet?name=李四&addr=山东济南&hobby=music&hobby=football&hobby=reading";
+		url = encodeURI(url);//脚本
+		alert(url);
+		window.location = url;
+	}
+	function _chg(){
+		//声明当前时间
+		var date = new Date();
+		var url  = "demo03?"+date.getTime();//这样的话，每一次时间都不一样，就类似于通知浏览器这是一个新的地址
+		var img = document.getElementById("codeImg");
+		img.src=url;
+	}
+</script>
+</html>
