@@ -1,0 +1,20 @@
+package com.oracle.test;
+
+import org.hibernate.Session;
+import org.junit.Test;
+
+import com.oracle.util.HibernateUtil;
+
+public class MyTest {
+	
+	@Test
+	public void none(){
+		Session session=HibernateUtil.getSession();
+		
+		
+		
+		session.close();
+		
+	}
+	
+}

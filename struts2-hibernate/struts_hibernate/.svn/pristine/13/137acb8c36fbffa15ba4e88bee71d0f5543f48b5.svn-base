@@ -1,0 +1,26 @@
+package com.oracle.dao;
+
+import java.util.List;
+
+import com.oracle.entity.Room;
+
+public class RoomDao extends BaseDao<Room>{
+
+	@Override
+	public List<Room> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int countAll() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+
+	
+
+}
+
+

@@ -1,0 +1,35 @@
+<?xml version="1.0"  ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+        
+	<hibernate-mapping package="com.oracle.entity">
+		<class name="Student" table="t_student">
+			<id name="uuid">
+	<!-- 
+		increment : hibernate通过代码去管理主键
+			每次插入数据之前,先通过max函数查询出当前的最大id,新的数据将会从使用下一个id插入
+	 		如果多个事务需要同时进行插入操作,那么可能产生"原子碰撞",产生错误的主键
+	 	identity : 利用数据库的主键自增策略生成主键
+	 		插入数据时由数据库自动生成主键,所以不需要在insert语句中生成id
+	 	sequence : hibernate针对oracle无法使用主键自增功能
+	 		提供额外的支持,新建一张id表,当需要插入数据时,从id中获取当前数据应该使用的id
+	 		获取到id之后,将id+1重新赋值到id表中.并用刚才取到的id生成下一条数据
+	 		
+	 	native : hibernate根据连接协议,选择使用identity或者是sequence
+	 	
+	 	uuid : 使用一个长度为32位的16进制字符串生成一个id
+	 		这个id为通用唯一标识符,理论上这个id永不重复
+	 		缺点是长度为32位的字符串在匹配上存在效率问题
+	 		
+	 	assigned : 人工分配id
+	 		在插入数据之前,人为为其指定一个id
+	 	
+	 -->
+				<generator class="uuid"/>
+			</id>
+			<property name="name"/>
+			<property name="age"/>
+			<property name="birthDay" column="birth_day"/>
+		</class>
+	</hibernate-mapping>

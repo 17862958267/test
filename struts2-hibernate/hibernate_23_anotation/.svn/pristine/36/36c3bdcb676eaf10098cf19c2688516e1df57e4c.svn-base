@@ -1,0 +1,66 @@
+package com.oracle.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+//hibernate注解orm映射需要的注解都在javax.persisitence包下
+
+
+//Entity表示交由hibernate管理的实体映射类
+@Entity
+//表明需要映射到数据库中的表的信息,包含表名称等
+@Table(name="t_country")
+public class Country {
+
+	//hibernate实体必须有id
+	@Id
+	//注解模式下,主键生成策略默认使用native
+	//Table为oracle模式下的sequence策略,可以应用于其他关系型数据库
+	//sequence也是oracle模式下的sequence策略,但是只能应用于oracle数据库
+	//hibernate注解模式不能提供方便的uuid自动设置功能,必须要手动设置
+	
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Integer cid;
+	
+	private String cname;
+	private String ccode;
+	
+	
+	public Country( String cname) {
+		this.cname = cname;
+	}
+	public Country() {
+		super();
+	}
+	
+	
+	public Integer getCid() {
+		return cid;
+	}
+	public void setCid(Integer cid) {
+		this.cid = cid;
+	}
+	public String getCname() {
+		return cname;
+	}
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+	public String getCcode() {
+		return ccode;
+	}
+	public void setCcode(String ccode) {
+		this.ccode = ccode;
+	}
+	
+	@Override
+	public String toString() {
+		return "Country [cid=" + cid + ", cname=" + cname + ", ccode=" + ccode + "]";
+	}
+	
+}

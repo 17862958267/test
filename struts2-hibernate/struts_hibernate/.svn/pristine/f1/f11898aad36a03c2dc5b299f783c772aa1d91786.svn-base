@@ -1,0 +1,19 @@
+package com.oracle.dao;
+
+import java.util.List;
+
+public class UserDao extends BaseDao {
+
+	@Override
+	public List findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int countAll() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

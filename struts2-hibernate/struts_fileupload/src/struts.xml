@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+    "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	<constant name="struts.devModel" value="true"></constant>
+	<package name="users" extends="struts-default" namespace="/">
+	<!-- 单文件上传 -->
+		<action name="upload" class="cn.oracle.struts.action.FileUploadAction"
+			method="upload">
+			<result name="success">success.jsp</result>
+		</action>
+		<!-- 多文件上传配置 -->
+		<action name="multi" class="cn.oracle.struts.action.MultiUploadAction" method="multi">
+			<result name="success">success.jsp</result>
+		</action>
+	</package>
+</struts>

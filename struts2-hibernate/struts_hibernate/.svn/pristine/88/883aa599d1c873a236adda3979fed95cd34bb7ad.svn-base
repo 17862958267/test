@@ -1,0 +1,54 @@
+package com.oracle.service;
+
+import java.util.List;
+
+import com.oracle.dao.BaseDao;
+import com.oracle.entity.Dept;
+import com.oracle.model.PageBean;
+
+public abstract class BaseService<T> {
+
+	//将所有dao的初始化操作放到baseService中
+	//子类继承就可以直接使用
+//	protected DeptDao deptDao=new DeptDao();
+//	protected RoomDao roomDao=new RoomDao();
+//	protected StudentDao studentDao=new StudentDao();
+//	protected UserDao userDao=new UserDao();
+	
+	//声明一个BaseDao,但是不初始化对象,让子类去初始化
+	protected BaseDao<T> dao;
+	
+
+	public void save(T obj){
+		dao.save(obj);
+	}
+	
+	public void delete(T dept){
+		dao.delete(dept);
+	}
+	
+	
+	public void update(T dept){
+		dao.update(dept);
+	}
+	
+	public T find(Class<T> clazz,int id){
+		return dao.find(clazz, id);
+	}
+	
+	public List<T> findAll(){
+		return dao.findAll();
+	}
+	
+	public PageBean findPageBean(int currentPage,int pageSize,T obj){
+		
+		PageBean pb=new PageBean(currentPage);
+		
+		//这里调用的是BaseDao中的方法
+		//如果子类需要分页查询,子类应当重写这两个方法,否则pageBean的list集合和maxSize都为空或0
+		pb.setList(dao.findAll(currentPage, pageSize, obj));
+		pb.setMaxSize(dao.countAll(obj));
+		
+		return pb;
+	}
+}

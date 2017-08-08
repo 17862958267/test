@@ -1,0 +1,122 @@
+package com.oracle.action;
+
+import java.util.List;
+
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.convention.annotation.Results;
+
+import com.oracle.entity.Dept;
+import com.oracle.model.PageBean;
+
+
+
+@Namespace("/dept")
+@Results({
+	//struts会自动寻找WEB-INF文件夹下的context文件夹
+	//而命名空间会自动寻找上述文件夹下的dept文件夹
+	//所以这里只需要指定jsp的名称即可
+	@Result(name="listPage",location="list.jsp"),
+	@Result(name="addPage",location="add.jsp"),
+	@Result(name="updatePage",location="update.jsp"),
+	@Result(name="redirect2list",location="list.action",type="redirect")
+	
+		
+})
+public class DeptAction extends BaseAction{
+	
+	
+	private PageBean pb;
+	private Integer currentPage=1;
+	private List<Dept> list;
+	private Dept dept=new Dept();
+	private Integer id;
+	private Integer[] ids1;//ids=1&ids=2&ids=3
+	private String ids2;//ids=1,2,3,4
+	
+	@Action("list")
+	public String list(){
+		pb=deptService.findPageBean(currentPage,10,dept);
+		return "listPage";
+		
+	}
+
+
+	
+	@Action("addPage")
+	public String addPage(){
+		return "addPage";
+	}
+	
+	@Action("add")
+	public String add(){
+		deptService.save(dept);
+		return "redirect2list";
+	}
+	
+	@Action("updatePage")
+	public String updatePage(){
+		dept=deptService.find(Dept.class,id);
+		return "updatePage";
+	}
+	
+	@Action("update")
+	public String update(){
+		
+		deptService.update(dept);
+		return "redirect2list";
+	}
+	
+	@Action("delete")
+	public String delete(){
+		deptService.delete(dept);
+		return "redirect2list";
+	}
+	
+	
+	
+
+	public PageBean getPb() {
+		return pb;
+	}
+	public void setPb(PageBean pb) {
+		this.pb = pb;
+	}
+	public Integer getCurrentPage() {
+		return currentPage;
+	}
+	public void setCurrentPage(Integer currentPage) {
+		this.currentPage = currentPage;
+	}
+	public List<Dept> getList() {
+		return list;
+	}
+	public void setList(List<Dept> list) {
+		this.list = list;
+	}
+	public Dept getDept() {
+		return dept;
+	}
+	public void setDept(Dept dept) {
+		this.dept = dept;
+	}
+	public Integer getId() {
+		return id;
+	}
+	public void setId(Integer id) {
+		this.id = id;
+	}
+	public Integer[] getIds1() {
+		return ids1;
+	}
+	public void setIds1(Integer[] ids1) {
+		this.ids1 = ids1;
+	}
+	public String getIds2() {
+		return ids2;
+	}
+	public void setIds2(String ids2) {
+		this.ids2 = ids2;
+	}
+}
